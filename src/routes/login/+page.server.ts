@@ -13,6 +13,9 @@ export const actions = {
 			.eq('username', username)
 			.single();
 
+		console.log('Supabase data:', data);
+		console.log('Supabase error:', error);
+
 		if (error || !data) {
 			return fail(400, { message: 'Username tidak ditemukan.' });
 		}
