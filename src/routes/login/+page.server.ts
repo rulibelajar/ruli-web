@@ -1,8 +1,8 @@
-import { fail } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import { supabase } from '$lib/supabaseClient';
 
 export const actions = {
-	login: async ({ request }) => {
+	login: async ({ request, cookies }) => {
 		const form = await request.formData();
 		const username = form.get('username') as string;
 		const password = form.get('password') as string;
@@ -24,7 +24,22 @@ export const actions = {
 			return fail(401, { message: 'Password salah.' });
 		}
 
-		// Sukses login (nanti bisa tambah session/cookie)
-		return { success: true, message: `Login berhasil, selamat datang ${data.username}!` };
+		// simpan session ke cookie
+		cookies.set(
+			'session',
+			JSON.stringify({
+				id: data.id,
+				username: data.username
+			}),
+			{
+				path: '/',
+				httpOnly: true,
+				sameSite: 'strict',
+				secure: false, // ubah ke true kalo production pakai https
+				maxAge: 60 * 60 * 24 // 1 day
+			}
+		);
+
+		throw redirect(303, '/admin');
 	}
 };
