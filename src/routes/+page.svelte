@@ -4,8 +4,12 @@
 	let { data } = $props();
 </script>
 
-<ul>
-	{#each data.instruments as instrument}
-		<li>{instrument.name}</li>
-	{/each}
-</ul>
+<main>
+	<ul>
+		{#each data.instruments as instrument}
+			<li>{instrument.name}</li>
+		{/each}
+	</ul>
+
+	<h1>Ini halaman Home</h1>
+</main>
