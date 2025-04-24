@@ -8,5 +8,5 @@
 	{#if form?.message}
 		<p class="error">{form.message}</p>
 	{/if}
-	<button type="submit">Login</button>
+	<button type="submit">Login Here</button>
 </form>
