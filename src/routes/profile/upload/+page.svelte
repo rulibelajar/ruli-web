@@ -3,32 +3,75 @@
 
 	let file: File | null = null;
 	let message = '';
+	let uploading = false;
 
-	async function uploadImage() {
-		if (!file) {
-			message = 'Pilih gambar dulu!';
-			return;
-		}
+	// Data pemain
+	let name = '';
+	let position = '';
+	let number: number;
+	let nationality = '';
+	let age: number;
 
-		const fileExt = file.name.split('.').pop();
-		const fileName = `${Date.now()}.${fileExt}`;
-		const filePath = `uploads/${fileName}`;
+	async function handleSubmit() {
+		message = '';
+		uploading = true;
 
-		const { data, error } = await supabase.storage
-			.from('ruli') // ganti dengan nama bucket kamu
-			.upload(filePath, file);
+		let imageUrl = '';
 
-		if (error) {
-			message = `Upload gagal: ${error.message}`;
-		} else {
+		// Upload gambar dulu
+		if (file) {
+			const fileExt = file.name.split('.').pop();
+			const fileName = `${Date.now()}.${fileExt}`;
+			const filePath = `uploads/${fileName}`;
+
+			const { error: uploadError } = await supabase.storage
+				.from('ruli') // Ganti dengan nama bucket
+				.upload(filePath, file);
+
+			if (uploadError) {
+				message = `Upload gagal: ${uploadError.message}`;
+				uploading = false;
+				return;
+			}
+
 			const { data: publicData } = supabase.storage.from('ruli').getPublicUrl(filePath);
-
-			message = `Upload berhasil! Lihat gambar: ${publicData.publicUrl}`;
+			imageUrl = publicData.publicUrl;
 		}
+
+		// Insert data ke tabel players
+		const { error: insertError } = await supabase.from('players').insert({
+			name,
+			position,
+			number,
+			nationality,
+			age,
+			image: imageUrl
+		});
+
+		if (insertError) {
+			message = `Insert gagal: ${insertError.message}`;
+		} else {
+			message = 'Data pemain berhasil ditambahkan!';
+			// Reset form
+			name = '';
+			position = '';
+			number = 0;
+			nationality = '';
+			age = 0;
+			file = null;
+		}
+
+		uploading = false;
 	}
 </script>
 
-<form on:submit|preventDefault={uploadImage} class="mt-4 flex flex-col">
+<form on:submit|preventDefault={handleSubmit} class="mt-4 flex flex-col">
+	<input bind:value={name} placeholder="Nama" required />
+	<input bind:value={position} placeholder="Posisi" required />
+	<input type="number" bind:value={number} placeholder="Nomor" required />
+	<input bind:value={nationality} placeholder="Kebangsaan" required />
+	<input type="date" bind:value={age} placeholder="Umur" required />
+
 	<input
 		type="file"
 		accept="image/*"
@@ -38,7 +81,10 @@
 		}}
 	/>
 
-	<button type="submit" class="mt-4 rounded bg-blue-500 p-2 text-white">Upload Gambar</button>
+	<button type="submit" class="mt-4 rounded bg-blue-500 p-2 text-white" disabled={uploading}>
+		{uploading ? 'Mengunggah...' : 'Kirim Data Pemain'}
+	</button>
+
 	{#if message}
 		<p>{message}</p>
 	{/if}
@@ -50,6 +96,12 @@
 		flex-direction: column;
 		gap: 1rem;
 		max-width: 300px;
+		padding: 1rem;
 		background-color: bisque;
+		border-radius: 8px;
+	}
+	input,
+	button {
+		padding: 0.5rem;
 	}
 </style>
