@@ -1,30 +1,19 @@
 <script>
 	const name = 'Data Manchester United';
 	let { data } = $props();
-
-	function handleRemove() {
-		// Menampilkan dialog konfirmasi
-		const confirmed = window.confirm('Apakah kamu yakin ingin menghapus item ini?');
-
-		// Jika pengguna mengkonfirmasi, lakukan tindakan penghapusan
-		if (confirmed) {
-			// Logika untuk menghapus item, bisa memanggil API atau update state
-			console.log('Item dihapus!');
-		} else {
-			console.log('Penghapusan dibatalkan');
-		}
-	}
 </script>
 
 <main>
 	<div class="mt-5 mr-4 mb-5 ml-4 flex items-center justify-between">
 		<h1 class="text-3xl font-bold text-red-500">{name}</h1>
-		<button
-			class="rounded-lg bg-blue-500 px-4 py-2 font-semibold text-white transition-all hover:bg-blue-600 focus:outline-none"
-			type="submit"
+		<a href="/admin/manchester_united/add"
+			><button
+				class="rounded-lg bg-blue-500 px-4 py-2 font-semibold text-white transition-all hover:bg-blue-600 focus:outline-none"
+				type="submit"
+			>
+				Add Player
+			</button></a
 		>
-			Add Player
-		</button>
 	</div>
 
 	<ul class="space-y-4">
@@ -48,9 +37,11 @@
 						></a
 					>
 
-					<button
-						class="rounded bg-red-600 px-4 py-2 text-white transition-all hover:bg-red-300 focus:outline-none"
-						on:click={handleRemove}>Remove</button
+					<a href="/admin/manchester_united/delete/{player.id}">
+						<button
+							class="rounded bg-red-600 px-4 py-2 text-white transition-all hover:bg-red-300 focus:outline-none"
+							>Delete</button
+						></a
 					>
 				</div>
 			</li>

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { supabase } from '$lib/supabaseClient';
+	import { goto } from '$app/navigation';
 
 	let file: File | null = null;
 	let message = '';
@@ -55,6 +56,9 @@
 			nationality = '';
 			age = 0;
 			file = null;
+
+			// Redirect to another page after successful insertion
+			goto('/admin/manchester_united');
 		}
 
 		uploading = false;
@@ -138,6 +142,7 @@
 
 		{#if message}
 			<p class="mt-2 text-center text-sm text-green-600">{message}</p>
+			goto('/admin/manchester_united')
 		{/if}
 	</form>
 </div>
