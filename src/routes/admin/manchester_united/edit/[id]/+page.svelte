@@ -13,6 +13,7 @@
 	let name = player?.name ?? '';
 	let position = player?.position ?? '';
 	let number = player?.number ?? 0;
+	let height = player?.height ?? 0;
 	let nationality = player?.nationality ?? '';
 	let age = player?.age ?? '';
 	let image = player?.image ?? '';
@@ -48,6 +49,7 @@
 				name,
 				position,
 				number,
+				height,
 				nationality,
 				age,
 				image: imageUrl
@@ -95,6 +97,14 @@
 			type="number"
 			bind:value={number}
 			placeholder="Nomor"
+			required
+			class="w-full rounded-xl border border-gray-300 px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500"
+		/>
+
+		<input
+			type="number"
+			bind:value={height}
+			placeholder="Height"
 			required
 			class="w-full rounded-xl border border-gray-300 px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500"
 		/>

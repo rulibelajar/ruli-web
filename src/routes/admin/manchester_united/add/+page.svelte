@@ -8,6 +8,7 @@
 	let name = '';
 	let position = '';
 	let number: number;
+	let height: number;
 	let nationality = '';
 	let age: number;
 
@@ -38,6 +39,7 @@
 			name,
 			position,
 			number,
+			height,
 			nationality,
 			age,
 			image: imageUrl
@@ -89,6 +91,14 @@
 			type="number"
 			bind:value={number}
 			placeholder="Nomor"
+			required
+			class="w-full rounded-xl border border-gray-300 px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500"
+		/>
+
+		<input
+			type="number"
+			bind:value={height}
+			placeholder="Height"
 			required
 			class="w-full rounded-xl border border-gray-300 px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500"
 		/>

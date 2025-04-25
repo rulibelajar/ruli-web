@@ -1,6 +1,19 @@
 <script>
 	const name = 'Data Manchester United';
 	let { data } = $props();
+
+	function handleRemove() {
+		// Menampilkan dialog konfirmasi
+		const confirmed = window.confirm('Apakah kamu yakin ingin menghapus item ini?');
+
+		// Jika pengguna mengkonfirmasi, lakukan tindakan penghapusan
+		if (confirmed) {
+			// Logika untuk menghapus item, bisa memanggil API atau update state
+			console.log('Item dihapus!');
+		} else {
+			console.log('Penghapusan dibatalkan');
+		}
+	}
 </script>
 
 <main>
@@ -37,7 +50,7 @@
 
 					<button
 						class="rounded bg-red-600 px-4 py-2 text-white transition-all hover:bg-red-300 focus:outline-none"
-						>Remove</button
+						on:click={handleRemove}>Remove</button
 					>
 				</div>
 			</li>
