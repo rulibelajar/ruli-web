@@ -1,5 +1,4 @@
 <script>
-	const red = 'text-red-600';
 	const name = 'Data Manchester United';
 	let { data } = $props();
 </script>
@@ -29,12 +28,15 @@
 					<span class="text-lg font-semibold">{player.name}</span>
 				</div>
 				<div class="flex gap-4">
-					<button
-						class="rounded bg-green-500 px-4 py-2 text-white transition-all hover:bg-green-600 focus:outline-none"
-						>Edit</button
+					<a href="/admin/manchester_united/edit/{player.id}"
+						><button
+							class="rounded bg-green-600 px-4 py-2 text-white transition-all hover:bg-green-700 focus:outline-none"
+							>Edit</button
+						></a
 					>
+
 					<button
-						class="rounded bg-red-500 px-4 py-2 text-white transition-all hover:bg-red-600 focus:outline-none"
+						class="rounded bg-red-600 px-4 py-2 text-white transition-all hover:bg-red-300 focus:outline-none"
 						>Remove</button
 					>
 				</div>

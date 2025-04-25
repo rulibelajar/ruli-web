@@ -16,7 +16,7 @@
 			<ul class="space-y-2">
 				<li>
 					<a
-						href="/dir/man_utd"
+						href="/admin/manchester_united"
 						class="block w-full rounded-lg bg-blue-500 px-4 py-2 font-medium text-white transition hover:bg-blue-600"
 					>
 						🔗 Ke Data Manchester United
