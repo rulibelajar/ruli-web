@@ -45,9 +45,9 @@
 
 <!-- Navbar -->
 <header class="sticky top-0 z-50 bg-gray-900 text-white">
-	<div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-		<h1 class="text-2xl font-bold">Ruli</h1>
-		<nav class="space-x-6">
+	<div class="mx-auto flex max-w-7xl flex-col items-center justify-between px-6 py-4 md:flex-row">
+		<h1 class="mb-4 text-2xl font-bold md:mb-0">Ruli</h1>
+		<nav class="flex flex-col items-center space-y-2 md:flex-row md:space-y-0 md:space-x-6">
 			<a href="/" class="hover:text-yellow-400">Home</a>
 			<a href="#about" class="hover:text-yellow-400">About</a>
 			<a href="#projects" class="hover:text-yellow-400">Projects</a>

@@ -7,7 +7,7 @@
 	<nav class="sticky top-0 z-50 bg-gray-950/90 shadow-md backdrop-blur">
 		<div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
 			<a href="/" class="text-2xl font-extrabold text-red-600">Man Utd</a>
-			<ul class="hidden gap-6 text-sm font-semibold text-gray-300 md:flex">
+			<ul class="flex gap-6 text-sm font-semibold text-gray-300">
 				<li><a href="#hero" class="hover:text-red-500">Home</a></li>
 				<li><a href="#about" class="hover:text-red-500">About</a></li>
 				<li><a href="#trophies" class="hover:text-red-500">Trophies</a></li>
@@ -17,6 +17,7 @@
 			</ul>
 		</div>
 	</nav>
+
 	<!-- Hero Section -->
 	<section
 		id="hero"
