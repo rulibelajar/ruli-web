@@ -10,7 +10,7 @@
 		<img
 			src={data.player.image}
 			alt={`Photo of ${data.player.name}`}
-			class="h-48 w-48 border-4 object-cover"
+			class="h-48 w-48 object-cover"
 		/>
 
 		<div class="space-y-2 text-center text-white">
