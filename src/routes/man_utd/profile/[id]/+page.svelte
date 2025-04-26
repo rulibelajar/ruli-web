@@ -3,7 +3,7 @@
 	export let data;
 </script>
 
-<main class="mx-auto max-w-3xl bg-gray-950 p-4">
+<main class="mx-auto min-h-screen w-full max-w-3xl bg-gray-950 p-4">
 	<h1 class="mb-6 text-center text-4xl font-extrabold text-red-700">Profile</h1>
 
 	<section class="flex flex-col items-center space-y-4 rounded-2xl bg-gray-900 p-6 shadow-md">
