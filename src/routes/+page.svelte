@@ -52,6 +52,7 @@
 			<a href="#about" class="hover:text-yellow-400">About</a>
 			<a href="#projects" class="hover:text-yellow-400">Projects</a>
 			<a href="#contact" class="hover:text-yellow-400">Contact</a>
+			<a href="/admin" class="hover:text-yellow-400">Admin</a>
 		</nav>
 	</div>
 </header>

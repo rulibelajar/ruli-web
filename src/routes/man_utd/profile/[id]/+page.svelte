@@ -31,5 +31,12 @@
 				Age: <span class="font-normal">{data.player.age} ({calculateAge(data.player.age)})</span>
 			</p>
 		</div>
+
+		<button
+			on:click={() => history.back()}
+			class="mt-4 rounded-lg bg-red-600 px-4 py-2 font-semibold text-white"
+		>
+			← Back
+		</button>
 	</section>
 </main>
